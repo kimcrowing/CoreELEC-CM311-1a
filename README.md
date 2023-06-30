@@ -1,4 +1,5 @@
 # Emuelec-addon
 Emuelec-addon for CoreELEC 20
 The xbmc.translatePath command no longer exists on kodi 20 and must be replaced with xbmcvfs.translatePath.
-# https://github.com/EmuELEC/EmuELEC-Addon
+
+# Update from # https://github.com/EmuELEC/EmuELEC-Addon # https://github.com/maskedeken/EmuELEC-Addon
