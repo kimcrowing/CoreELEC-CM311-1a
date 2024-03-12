@@ -1,0 +1,21 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: 安装依赖
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y 需要的依赖包名
+    - name: 执行脚本构建文件
+      run: ./构建脚本.sh
+    - name: 创建Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: 构建文件路径
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
