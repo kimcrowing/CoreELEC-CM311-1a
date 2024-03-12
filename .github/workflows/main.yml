@@ -10,7 +10,7 @@ jobs:
     - name: 安装依赖
       run: |
         sudo apt-get update
-        sudo apt-get install -y 需要的依赖包名
+        sudo pip install -r requirements.txt
     - name: 进入构建脚本目录
       run: cd CM311-1a-CoreELEC
     - name: 执行脚本构建文件
