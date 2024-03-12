@@ -8,8 +8,8 @@ on:
     - 'v*'
   #  branches: 
   #    - master
-  schedule:
-    - cron: '12 */10 * * *'
+  #schedule:
+    #- cron: '12 */10 * * *'
   watch:
     types: [started]
 
@@ -26,9 +26,14 @@ jobs:
       run: |
         cd CM311-1a-CoreELEC
         sudo sh ./build.sh
+    - name: 创建标签
+      run: git tag NEXUS
+      env:
+        GITHUB_TOKEN: ${{ secrets.pat }}
     - name: 创建Release
       uses: softprops/action-gh-release@v1
       with:
         files: ./*.gz
+        tag_name: NEXUS
       env:
         GITHUB_TOKEN: ${{ secrets.pat }}
