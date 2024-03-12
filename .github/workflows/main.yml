@@ -31,13 +31,13 @@ jobs:
       run: echo "::set-output name=FILENAME::$(ls ./*.gz)"
       shell: bash
     - name: 创建标签
-      run: git tag NEXUS
+      run: git tag test
       env:
         GITHUB_TOKEN: ${{ secrets.pat }}
     - name: 创建Release
       uses: softprops/action-gh-release@v1
       with:
         files: ${{ steps.get_filename.outputs.FILENAME }}
-        tag_name: NEXUS
+        tag_name: test
       env:
         GITHUB_TOKEN: ${{ secrets.pat }}
