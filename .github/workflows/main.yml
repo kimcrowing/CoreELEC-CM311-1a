@@ -26,6 +26,10 @@ jobs:
       run: |
         cd CM311-1a-CoreELEC
         sudo sh ./build.sh
+    - name: 获取构建文件名
+      id: get_filename
+      run: echo "::set-output name=FILENAME::$(ls ./*.gz)"
+      shell: bash
     - name: 创建标签
       run: git tag NEXUS
       env:
@@ -33,7 +37,7 @@ jobs:
     - name: 创建Release
       uses: softprops/action-gh-release@v1
       with:
-        files: ./*.gz
+        files: ${{ steps.get_filename.outputs.FILENAME }}
         tag_name: NEXUS
       env:
         GITHUB_TOKEN: ${{ secrets.pat }}
