@@ -1,6 +1,17 @@
 name: CI
 
-on: [push]
+on: 
+  release:
+    types: [published]
+  push:
+    tags:
+    - 'v*'
+  #  branches: 
+  #    - master
+  schedule:
+    - cron: '12 */10 * * *'
+  watch:
+    types: [started]
 
 jobs:
   build:
