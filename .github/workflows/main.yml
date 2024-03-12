@@ -12,7 +12,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y 需要的依赖包名
     - name: 进入构建脚本目录
-      run: cd 构建脚本所在目录
+      run: cd CM311-1a-CoreELEC
     - name: 执行脚本构建文件
       run: ./构建脚本.sh
     - name: 创建Release
