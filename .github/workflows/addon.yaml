@@ -1,0 +1,44 @@
+name: Emuelec-addon
+
+on: 
+  release:
+    types: [published]
+  push:
+    tags:
+    - 'v*'
+  #  branches: 
+  #    - master
+  #schedule:
+    #- cron: '12 */10 * * *'
+  watch:
+    types: [started]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: 安装依赖
+      run: |
+        sudo apt-get update
+        cat dependencies.txt | xargs sudo apt-get install -y
+        sudo pip install -r requirements.txt
+    - name: 构建脚本
+      run: |
+        cd Emuelec-addon
+        sudo sh ./build.sh
+    - name: 获取构建文件名
+      id: get_filename
+      run: echo "FILENAME=$(ls Emuelec-addon/*.gz)" >> $GITHUB_ENV
+      shell: bash
+    #- name: 创建标签
+     # run: git tag test
+      #env:
+        #GITHUB_TOKEN: ${{ secrets.pat }}
+    - name: 创建Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ${{ env.FILENAME }}
+        tag_name: Emuelec-addon
+      env:
+        GITHUB_TOKEN: ${{ secrets.pat }}
