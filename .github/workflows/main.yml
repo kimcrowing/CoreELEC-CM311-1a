@@ -28,7 +28,7 @@ jobs:
         sudo sh ./build.sh
     - name: 获取构建文件名
       id: get_filename
-      run: echo "FILENAME=$(ls ./*.gz)" >> $GITHUB_ENV
+      run: echo "FILENAME=$(ls CM311-1a-CoreELEC/*.gz)" >> $GITHUB_ENV
       shell: bash
     #- name: 创建标签
      # run: git tag test
