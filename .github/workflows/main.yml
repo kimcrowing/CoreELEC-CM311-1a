@@ -18,6 +18,6 @@ jobs:
     - name: 创建Release
       uses: softprops/action-gh-release@v1
       with:
-        files: 构建文件路径
+        files: ./*.gz
       env:
         GITHUB_TOKEN: ${{ secrets.pat }}
