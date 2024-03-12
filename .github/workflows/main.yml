@@ -22,10 +22,10 @@ jobs:
       run: |
         sudo apt-get update
         sudo pip install -r requirements.txt
-    - name: 进入构建脚本目录
-      run: cd CM311-1a-CoreELEC
-    - name: 执行脚本构建文件
-      run: ./build.sh
+    - name: 构建脚本
+      run: |
+        cd CM311-1a-CoreELEC
+        ./build.sh
     - name: 创建Release
       uses: softprops/action-gh-release@v1
       with:
