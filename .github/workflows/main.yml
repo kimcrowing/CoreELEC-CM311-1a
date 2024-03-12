@@ -25,7 +25,7 @@ jobs:
     - name: 构建脚本
       run: |
         cd CM311-1a-CoreELEC
-        ./build.sh
+        sudo ./build.sh
     - name: 创建Release
       uses: softprops/action-gh-release@v1
       with:
