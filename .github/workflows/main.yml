@@ -28,16 +28,16 @@ jobs:
         sudo sh ./build.sh
     - name: 获取构建文件名
       id: get_filename
-      run: echo "::set-output name=FILENAME::$(ls ./*.gz)"
+      run: echo "FILENAME=$(ls ./*.gz)" >> $GITHUB_ENV
       shell: bash
-    - name: 创建标签
-      run: git tag test
-      env:
-        GITHUB_TOKEN: ${{ secrets.pat }}
+    #- name: 创建标签
+     # run: git tag test
+      #env:
+        #GITHUB_TOKEN: ${{ secrets.pat }}
     - name: 创建Release
       uses: softprops/action-gh-release@v1
       with:
-        files: ${{ steps.get_filename.outputs.FILENAME }}
+        files: ${{ env.FILENAME }}
         tag_name: test
       env:
         GITHUB_TOKEN: ${{ secrets.pat }}
