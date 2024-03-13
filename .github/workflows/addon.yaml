@@ -29,7 +29,7 @@ jobs:
         cd Emuelec-addon
         sudo sh ./build.sh
         cd EmuELEC
-        sudo bash ./emuelec-addon.sh
+        bash ./emuelec-addon.sh
     - name: 获取构建文件名
       id: get_filename
       run: echo "FILENAME=$(ls Emuelec-addon/*.gz)" >> $GITHUB_ENV
