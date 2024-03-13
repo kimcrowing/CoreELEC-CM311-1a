@@ -1,3 +1,4 @@
+#! /bin/sh
 source_url="https://github.com/EmuELEC/EmuELEC.git"
 echo " Welcome to build Emulelec-addon""
 echo "Downloading CEmulelec"
