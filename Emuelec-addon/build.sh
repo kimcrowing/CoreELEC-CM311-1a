@@ -6,4 +6,4 @@ git clone https://github.com/EmuELEC/EmuELEC.git
 ls
 echo "Copy emuelec-addon.sh"
 sudo cp ./emuelec-addon.sh ./EmuELEC/
-sudo chown a+x ./EmuELEC/emuelec-addon.sh
+sudo chmod a+x ./EmuELEC/emuelec-addon.sh
