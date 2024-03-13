@@ -5,5 +5,5 @@ echo "Downloading CEmulelec"
 git clone https://github.com/EmuELEC/EmuELEC.git
 ls
 echo "Copy emuelec-addon.sh"
-sudo cp ./emuelec-addon.sh ./Emuelec/emuelec-addon.sh
+sudo cp ./emuelec-addon.sh ./Emuelec/
 sudo chown +x ./Emuelec/emuelec-addon.sh
