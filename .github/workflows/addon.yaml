@@ -34,10 +34,10 @@ jobs:
       id: get_filename
       run: echo "FILENAME=$(ls ./EmuELEC/repo/4.7/script.emuelec.Amlogic-ce.launcher/*.zip)" >> $GITHUB_ENV
       shell: bash
-    #- name: 创建标签
-     # run: git tag test
-      #env:
-        #GITHUB_TOKEN: ${{ secrets.pat }}
+    - name: 创建标签
+      run: git tag Emuelec-addon
+      env:
+        GITHUB_TOKEN: ${{ secrets.pat }}
     - name: 创建Release
       uses: softprops/action-gh-release@v1
       with:
