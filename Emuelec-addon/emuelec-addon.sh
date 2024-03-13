@@ -1172,7 +1172,7 @@ rm -rf "$LOG"
 echo
 echo "Finished."
 echo
-
+cat "${SCRIPT_DIR}/emuelec-kodi_$(date +%Y%m%d_%H%M%S).log"
 } 
 
 build_it Amlogic
