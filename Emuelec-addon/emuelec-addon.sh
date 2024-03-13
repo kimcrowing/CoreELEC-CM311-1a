@@ -19,7 +19,7 @@ SX05RE_PATH="packages/sx05re"
 EMUELEC_PATH="${SX05RE_PATH}/emuelec"
 [ -z "$EMUELEC_ADDON_VERSION" ] && EMUELEC_ADDON_VERSION="4.7"
 
-LOG="${SCRIPT_DIR}/emuelec-kodi_`date +%Y%m%d_%H%M%S`.log"
+LOG="${SCRIPT_DIR}/emuelec-kodi_`date +%Y%m%d_%H`.log"
 
 # Exit if not in the right branch 
 if [ -d "$EMUELEC" ] ; then
