@@ -166,6 +166,7 @@ if [ -d "$EMUELEC" ] ; then
 		EMUELEC_ADDON="Yes" DISTRO=$DISTRO PROJECT=$PROJECT ARCH=$ARCH ./scripts/clean $package &>>"$LOG"
 		fi
 			EMUELEC_ADDON="Yes" DISTRO=$DISTRO PROJECT=$PROJECT ARCH=$ARCH ./$SCRIPT $package &>>"$LOG" || { echo "Error building package '$package'. Check the log at $LOG for details." ; exit 1 ; }
+                        cat "${SCRIPT_DIR}/emuelec-kodi_$(date +%Y%m%d_%H%M%S).log"
 		if [ $? -eq 0 ] ; then
 			echo "(ok)"
 	else
