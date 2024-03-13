@@ -19,7 +19,7 @@ SX05RE_PATH="packages/sx05re"
 EMUELEC_PATH="${SX05RE_PATH}/emuelec"
 [ -z "$EMUELEC_ADDON_VERSION" ] && EMUELEC_ADDON_VERSION="4.7"
 
-LOG="${SCRIPT_DIR}/emuelec-kodi_`date +%Y%m%d_%H`.log"
+LOG="${SCRIPT_DIR}/emuelec-kodi_`date +%Y%m%d`.log"
 
 # Exit if not in the right branch 
 if [ -d "$EMUELEC" ] ; then
@@ -165,7 +165,7 @@ if [ -d "$EMUELEC" ] ; then
 		if [ $package = "emulationstation" ]; then
 		EMUELEC_ADDON="Yes" DISTRO=$DISTRO PROJECT=$PROJECT ARCH=$ARCH ./scripts/clean $package &>>"$LOG"
 		fi
-			EMUELEC_ADDON="Yes" DISTRO=$DISTRO PROJECT=$PROJECT ARCH=$ARCH ./$SCRIPT $package &>>"$LOG" || { echo "Error building package '$package'. Check the log at $LOG for details." ; cat "${SCRIPT_DIR}/emuelec-kodi_$(date +%Y%m%d_%H).log"; exit 1 ; }
+			EMUELEC_ADDON="Yes" DISTRO=$DISTRO PROJECT=$PROJECT ARCH=$ARCH ./$SCRIPT $package &>>"$LOG" || { echo "Error building package '$package'. Check the log at $LOG for details." ; cat "${SCRIPT_DIR}/emuelec-kodi_$(date +%Y%m%d).log"; exit 1 ; }
 		if [ $? -eq 0 ] ; then
 			echo "(ok)"
 	else
