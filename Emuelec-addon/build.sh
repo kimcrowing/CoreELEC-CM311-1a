@@ -1,7 +1,7 @@
 #! /bin/sh
 source_url="https://github.com/EmuELEC/EmuELEC.git"
 echo " Welcome to build Emulelec-addon"
-echo "Downloading CEmulelec"
+echo "Downloading Emulelec"
 git clone https://github.com/EmuELEC/EmuELEC.git
 ls
 echo "Copy emuelec-addon.sh"
