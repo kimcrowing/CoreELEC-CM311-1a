@@ -6,3 +6,4 @@ libxml-parser-perl
 libparse-yapp-perl
 gperf
 patchutils meson
+gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
