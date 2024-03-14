@@ -30,7 +30,6 @@ jobs:
         sh ./build.sh
         cd EmuELEC
         bash ./emuelec-addon.sh
-        bash ./emuelec-addon.sh
     - name: 获取构建文件名
       id: get_filename
       run: echo "FILENAME=$(ls ./EmuELEC/repo/4.7/script.emuelec.Amlogic-ce.launcher/*.zip)" >> $GITHUB_ENV
