@@ -9,8 +9,8 @@ build_it() {
 REPO_DIR=""
 FORCEUPDATE="yes"
 PROJECT="Amlogic-ng"
-GIT_BRANCH="dev_4.3"
-EMUELEC_ADDON_VERSION="4.3"
+GIT_BRANCH="dev"
+EMUELEC_ADDON_VERSION="4.7"
 
 [ -z "$SCRIPT_DIR" ] && SCRIPT_DIR=$(pwd)
 
