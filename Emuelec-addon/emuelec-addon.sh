@@ -35,7 +35,7 @@ fi
 
 [ -z "$DISTRO" ] && DISTRO=EmuELEC
 [ -z "$PROJECT" ] && PROJECT=Amlogic
-[ -z "$ARCH" ] && ARCH=arm
+[ -z "$ARCH" ] && ARCH=aarch64
 [ -z "$PROVIDER" ] && PROVIDER="EmuELEC"
 [ -z "$VERSION" ] && VERSION=$(cat $SCRIPT_DIR/distributions/$DISTRO/version | grep LIBREELEC_VERSION | grep -oP '"\K[^"\047]+(?=["\047])')
 
