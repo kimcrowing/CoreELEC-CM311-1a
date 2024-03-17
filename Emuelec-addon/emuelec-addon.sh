@@ -54,7 +54,7 @@ PROJECT_DIR="${SCRIPT_DIR}/emuelec_addon_workdir"
 TARGET_DIR="${PROJECT_DIR}/`date +%Y-%m-%d_%H%M%S`"
 BASE_NAME="$PROVIDER.$DISTRO"
 
-LIBRETRO_BASE="retroarch retroarch-assets retroarch-overlays core-info common-shaders openal-soft"
+LIBRETRO_BASE="retroarch-assets retroarch retroarch-overlays core-info common-shaders openal-soft"
 
     # Get cores from EmuELEC options file
     OPTIONS_FILE="${SCRIPT_DIR}/distributions/${DISTRO}/options"
