@@ -171,6 +171,13 @@ if [ -d "$EMUELEC" ] ; then
 			EMUELEC_ADDON="Yes" DISTRO=$DISTRO PROJECT=$PROJECT ARCH=$ARCH ./$SCRIPT $package &>>"$LOG" || { echo "Error building package '$package'. Check the log at $LOG for details." ; exit 1 ; }
 		if [ $? -eq 0 ] ; then
 			echo "(ok)"
+  			rm -rf ./sources/${package}-${PKG_VERSION}
+       			if [ $? -eq 0 ]; then
+  				echo "Deleted $package successfully" &>>"$LOG"
+			else
+				echo "Failed to delete $PKG_FOLDER" &>>"$LOG"
+				exit 1
+			fi
 	else
 			echo "(failed)"
 			echo "Error building package '$package'!"
@@ -205,15 +212,6 @@ if [ -d "$EMUELEC" ] ; then
 			PKG_FOLDER="${BUILD_SUBDIR}/${package}-${PKG_VERSION}/.install_pkg"
 			if [ -d "$PKG_FOLDER" ] ; then
 				cp -Rf "${PKG_FOLDER}/"* "${TARGET_DIR}/" &>>"$LOG"
-    				if [ $? -eq 0 ]; then
-  					rm -rf ./sources/${package}-${PKG_VERSION}
-       					if [ $? -eq 0 ]; then
-  						echo "Deleted $PKG_FOLDER successfully" &>>"$LOG"
-					else
-						echo "Failed to delete $PKG_FOLDER" &>>"$LOG"
-					exit 1
-					fi
-				fi
 				[ $? -eq 0 ] && echo "(ok)" || { echo "(failed)" ; exit 1 ; }
 			else
 				echo "(skipped - not found or not compatible)"
