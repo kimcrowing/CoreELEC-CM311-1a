@@ -11,7 +11,7 @@ FORCEUPDATE="yes"
 PROJECT="Amlogic-ce"
 VERSION="4.7"
 GIT_BRANCH="dev"
-EMUELEC_ADDON_VERSION="4.7"
+EMUELEC_ADDON_VERSION=$VERSION
 
 [ -z "$SCRIPT_DIR" ] && SCRIPT_DIR=$(pwd)
 
@@ -205,6 +205,15 @@ if [ -d "$EMUELEC" ] ; then
 			PKG_FOLDER="${BUILD_SUBDIR}/${package}-${PKG_VERSION}/.install_pkg"
 			if [ -d "$PKG_FOLDER" ] ; then
 				cp -Rf "${PKG_FOLDER}/"* "${TARGET_DIR}/" &>>"$LOG"
+    				if [ $? -eq 0 ]; then
+  					rm -rf ./sources/${package}-${PKG_VERSION}
+       					if [ $? -eq 0 ]; then
+  						echo "Deleted $PKG_FOLDER successfully" &>>"$LOG"
+					else
+						echo "Failed to delete $PKG_FOLDER" &>>"$LOG"
+					exit 1
+					fi
+				fi
 				[ $? -eq 0 ] && echo "(ok)" || { echo "(failed)" ; exit 1 ; }
 			else
 				echo "(skipped - not found or not compatible)"
