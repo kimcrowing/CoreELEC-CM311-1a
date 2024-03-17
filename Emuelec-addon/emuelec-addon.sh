@@ -9,15 +9,17 @@ build_it() {
 REPO_DIR=""
 FORCEUPDATE="yes"
 PROJECT="Amlogic-ng"
+GIT_BRANCH="dev_4.3"
+EMUELEC_ADDON_VERSION="4.3"
 
 [ -z "$SCRIPT_DIR" ] && SCRIPT_DIR=$(pwd)
 
 # make sure you change these lines to point to your EmuELEC git clone
 EMUELEC="${SCRIPT_DIR}"
-[ -z "$GIT_BRANCH" ] && GIT_BRANCH="dev_4.3"
+[ -z "$GIT_BRANCH" ] && GIT_BRANCH="master"
 SX05RE_PATH="packages/sx05re"
 EMUELEC_PATH="${SX05RE_PATH}/emuelec"
-[ -z "$EMUELEC_ADDON_VERSION" ] && EMUELEC_ADDON_VERSION="4.3"
+[ -z "$EMUELEC_ADDON_VERSION" ] && EMUELEC_ADDON_VERSION="3.6"
 
 LOG="${SCRIPT_DIR}/emuelec-kodi_`date +%Y%m%d`.log"
 
