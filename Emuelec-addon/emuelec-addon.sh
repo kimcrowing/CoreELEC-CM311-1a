@@ -8,7 +8,7 @@
 build_it() {
 REPO_DIR=""
 FORCEUPDATE="yes"
-PROJECT="Amlogic-ce"
+PROJECT="Amlogic-ng"
 
 [ -z "$SCRIPT_DIR" ] && SCRIPT_DIR=$(pwd)
 
