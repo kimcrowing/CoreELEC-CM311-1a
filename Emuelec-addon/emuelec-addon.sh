@@ -9,6 +9,7 @@ build_it() {
 REPO_DIR=""
 FORCEUPDATE="yes"
 PROJECT="Amlogic-ce"
+VERSION="4.7"
 GIT_BRANCH="dev"
 EMUELEC_ADDON_VERSION="4.7"
 
