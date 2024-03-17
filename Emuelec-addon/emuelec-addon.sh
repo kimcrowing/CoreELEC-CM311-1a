@@ -55,7 +55,7 @@ PROJECT_DIR="${SCRIPT_DIR}/emuelec_addon_workdir"
 TARGET_DIR="${PROJECT_DIR}/`date +%Y-%m-%d_%H%M%S`"
 BASE_NAME="$PROVIDER.$DISTRO"
 
-LIBRETRO_BASE="retroarch-assets retroarch retroarch-overlays core-info common-shaders openal-soft"
+LIBRETRO_BASE="retroarch retroarch-assets retroarch-overlays core-info common-shaders openal-soft"
 
     # Get cores from EmuELEC options file
     OPTIONS_FILE="${SCRIPT_DIR}/distributions/${DISTRO}/options"
@@ -168,7 +168,7 @@ if [ -d "$EMUELEC" ] ; then
 		if [ $package = "emulationstation" ]; then
 		EMUELEC_ADDON="Yes" DISTRO=$DISTRO PROJECT=$PROJECT ARCH=$ARCH ./scripts/clean $package &>>"$LOG"
 		fi
-			EMUELEC_ADDON="Yes" DISTRO=$DISTRO PROJECT=$PROJECT ARCH=$ARCH ./$SCRIPT $package &>>"$LOG" || { echo "Error building package '$package'. Check the log at $LOG for details." ; cat "${SCRIPT_DIR}/emuelec-kodi_$(date +%Y%m%d).log"; exit 1 ; }
+			EMUELEC_ADDON="Yes" DISTRO=$DISTRO PROJECT=$PROJECT ARCH=$ARCH ./$SCRIPT $package &>>"$LOG" || { echo "Error building package '$package'. Check the log at $LOG for details." ; exit 1 ; }
 		if [ $? -eq 0 ] ; then
 			echo "(ok)"
 	else
