@@ -33,7 +33,7 @@ jobs:
         bash ./emuelec-addon.sh
     - name: 获取构建文件名
       id: get_filename
-      run: echo "FILENAME=$(ls ./EmuELEC/repo/4.3/script.emuelec.Amlogic-ce.launcher/*.zip)" >> $GITHUB_ENV
+      run: echo "FILENAME=$(ls ./EmuELEC/repo/4.3/script.emuelec.Amlogic-ng.launcher/*.zip)" >> $GITHUB_ENV
       shell: bash
     - name: 创建标签
       run: git tag Emuelec-addon
