@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 source_url="https://github.com/kimcrowing/EmuELEC.git"
 echo " Welcome to build Emulelec-addon"
