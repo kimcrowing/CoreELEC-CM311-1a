@@ -8,11 +8,10 @@
 build_it() {
 REPO_DIR=""
 FORCEUPDATE="yes"
-PROJECT=$1
+PROJECT=
 VERSION="4.7"
 GIT_BRANCH="dev"
 EMUELEC_ADDON_VERSION=$VERSION
-echo "$1"
 
 [ -z "$SCRIPT_DIR" ] && SCRIPT_DIR=$(pwd)
 
