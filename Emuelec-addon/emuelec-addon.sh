@@ -8,7 +8,7 @@
 build_it() {
 REPO_DIR=""
 FORCEUPDATE="yes"
-PROJECT=
+PROJECT=$1
 VERSION="4.7"
 GIT_BRANCH="dev"
 EMUELEC_ADDON_VERSION=$VERSION
@@ -17,7 +17,7 @@ EMUELEC_ADDON_VERSION=$VERSION
 
 # make sure you change these lines to point to your EmuELEC git clone
 EMUELEC="${SCRIPT_DIR}"
-[ -z "$GIT_BRANCH" ] && GIT_BRANCH="master"
+[ -z "$GIT_BRANCH" ] && GIT_BRANCH="dev"
 SX05RE_PATH="packages/sx05re"
 EMUELEC_PATH="${SX05RE_PATH}/emuelec"
 [ -z "$EMUELEC_ADDON_VERSION" ] && EMUELEC_ADDON_VERSION="3.6"
