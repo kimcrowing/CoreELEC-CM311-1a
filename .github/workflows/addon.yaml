@@ -27,7 +27,7 @@ jobs:
     - name: 构建脚本
       run: |
         cd Emuelec-addon
-        sh ./build.sh
+        ./build.sh
         #./emuelec-addon.sh Amlogic-ce
     - name: 获取构建文件名
       id: get_filename
