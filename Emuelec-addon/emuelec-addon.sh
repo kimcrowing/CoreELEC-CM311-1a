@@ -38,7 +38,7 @@ if [ -d "$EMUELEC" ] ; then
 fi 
 
 [ -z "$DISTRO" ] && DISTRO=EmuELEC
-[ -z "$PROJECT" ] && PROJECT=Amlogic
+[ -z "$PROJECT" ] && PROJECT=Amlogic-ce
 [ -z "$ARCH" ] && ARCH=aarch64
 [ -z "$PROVIDER" ] && PROVIDER="EmuELEC"
 [ -z "$VERSION" ] && VERSION=$(cat $SCRIPT_DIR/distributions/$DISTRO/version | grep LIBREELEC_VERSION | grep -oP '"\K[^"\047]+(?=["\047])')
@@ -112,7 +112,7 @@ if [ -n "$DISABLED_CORES" ] ; then
 fi
 
 # Add packages for S922x
-if [ "$PROJECT" == "Amlogic-ng" ]; then
+if [ "$PROJECT" == "Amlogic-ce" ]; then
 PACKAGES_ALL+=" $LIBRETRO_S922X_CORES mame2016"
 fi
 
@@ -1187,4 +1187,4 @@ cat "${SCRIPT_DIR}/emuelec-kodi_$(date +%Y%m%d_%H%M%S).log"
 } 
 
 #build_it Amlogic
-build_it ()
+build_it Amlogic-ce
