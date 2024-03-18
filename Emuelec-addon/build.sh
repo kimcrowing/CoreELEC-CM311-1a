@@ -10,4 +10,4 @@ echo "Copy emuelec-addon.sh"
 sudo \cp ./emuelec-addon.sh ./EmuELEC/
 sudo chmod a+x ./EmuELEC/emuelec-addon.sh
 cd EmuELEC
-./emuelec-addon.sh "Amlogic-ce"
+./emuelec-addon.sh Amlogic-ce
