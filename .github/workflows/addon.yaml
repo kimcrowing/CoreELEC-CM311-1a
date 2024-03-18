@@ -28,6 +28,7 @@ jobs:
       run: |
         cd Emuelec-addon
         bash ./build.sh
+        cd EmuELEC
         bash ./emuelec-addon.sh
     - name: 获取构建文件名
       id: get_filename
