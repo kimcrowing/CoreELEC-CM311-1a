@@ -30,7 +30,7 @@ jobs:
         sh ./build.sh
         cd EmuELEC
         #sh PROJECT=Amlogic-ce DEVICE=Amlogic-ng ARCH=aarch64 DISTRO=EmuELEC make image
-        bash ./emuelec-addon.sh
+        bash ./emuelec-addon.sh Amlogic-ce
     - name: 获取构建文件名
       id: get_filename
       run: echo "FILENAME=$(ls ./EmuELEC/repo/4.7/script.emuelec.Amlogic-ce.launcher/*.zip)" >> $GITHUB_ENV
