@@ -40,6 +40,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: ${{ env.FILENAME }}
-        tag_name: test
+        tag_name:  20.5-Nexus-CM11-1a
       env:
         GITHUB_TOKEN: ${{ secrets.pat }}
