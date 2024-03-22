@@ -1,5 +1,5 @@
 #! /bin/sh
-version="20.5-Nexus"
+version="21.0-Omega_rc2"
 source_img_name="CoreELEC-Amlogic-ng.arm-${version}-Generic"
 source_img_file="${source_img_name}.img.gz"
 source_img_url="https://ghproxy.org/https://github.com/CoreELEC/CoreELEC/releases/download/${version}/${source_img_name}.img.gz"
