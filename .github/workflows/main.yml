@@ -32,14 +32,14 @@ jobs:
       id: get_filename
       run: echo "FILENAME=$(ls CM311-1a-CoreELEC/*.gz)" >> $GITHUB_ENV
       shell: bash
-    #- name: 创建标签
-     # run: git tag test
-      #env:
-        #GITHUB_TOKEN: ${{ secrets.pat }}
+    - name: 创建标签
+      run: git tag 21.0-Omega_rc2
+      env:
+        GITHUB_TOKEN: ${{ secrets.pat }}
     - name: 创建Release
       uses: softprops/action-gh-release@v1
       with:
         files: ${{ env.FILENAME }}
-        tag_name:  20.5-Nexus-CM11-1a
+        tag_name:  21.0-Omega_rc2
       env:
         GITHUB_TOKEN: ${{ secrets.pat }}
