@@ -1,4 +1,4 @@
-name: Coreelec
+name: Omega
 
 on: 
   release:
