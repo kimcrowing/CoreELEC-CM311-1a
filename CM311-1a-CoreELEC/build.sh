@@ -1,6 +1,6 @@
 #! /bin/sh
 version="21.0-Omega"
-source_img_name="CoreELEC-Amlogic-ng.arm-${version}-Generic"
+source_img_name="CoreELEC-Amlogic-ne.aarch64-${version}-Generic"
 source_img_file="${source_img_name}.img.gz"
 source_img_url="https://ghproxy.org/https://github.com/CoreELEC/CoreELEC/releases/download/${version}/${source_img_name}.img.gz"
 target_img_prefix="CoreELEC-Amlogic-ng.arm-${version}"
