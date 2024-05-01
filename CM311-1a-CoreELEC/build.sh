@@ -31,7 +31,6 @@ offset=$(($(fdisk -l -o start ${source_img_name}.img|grep -v "[a-zA-Z]"|grep -v 
 sudo mount -o loop,offset=${offset} ${source_img_name}.img ${mount_point}
 
 echo "Downloading Emuelec-addon"
-sudo mkdir ${kodi_addon}
 wget ${emuelec_url} -O ${addon_file} | exit 1
 echo "copy emuELEC addon"
 unzip ${addon_file} -d ${kodi_addon} | exit 1
