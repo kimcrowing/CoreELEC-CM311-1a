@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#name of the file we need to put in the roms folder in your USB or SDCARD 
+ROMFILE="emuelecroms"
+
+# we look for the file in the rompath
+FULLPATHTOROMS="$(find /media/*/roms/ -name $ROMFILE -maxdepth 1 | head -n 1)"
+ROMS_FOLDER="/storage/.kodi/addons/script.emuelec.Amlogic-ng.launcher/roms"
+
+if [[ -z "${FULLPATHTOROMS}" ]]; then
+# echo "can't find roms"
+
+    if [ ! -e /storage/roms ]; then
+      rm /storage/roms
+      ln -sf "$ROMS_FOLDER" /storage/roms
+    fi
+    else
+	if [ -L "/storage/roms" ]; then
+		rm /storage/roms
+		#echo "move the roms folder"
+	fi
+ 
+       # we strip the name of the file.
+       PATHTOROMS=${FULLPATHTOROMS%$ROMFILE}
+
+       #we create the symlink to the roms in our USB
+       ln -sTf $PATHTOROMS /storage/roms
+ fi
+
+exit 0

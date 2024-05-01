@@ -1,0 +1,96 @@
+<!--
+theme name:		simple-dark
+version:		0.9
+author:			nolageek (based on simple by nils bonenberger (nilsbyte@nilsbyte.de))
+email:			nolageek@gmail.com 
+license:		creative commons CC-BY-NC-SA
+-->
+
+<theme>
+    <formatVersion>3</formatVersion>
+
+	<view name="system">
+	
+		<image name="background" extra="true">
+			<path>./art/logosbg.jpg</path>
+			<size>0 1</size>
+			<pos>0.5 0.5</pos>
+			<origin>0.5 0.5</origin>
+		</image>
+
+	</view>
+
+    <view name="basic, detailed">
+
+		<text name="md_lbl_rating, md_lbl_releasedate, md_lbl_developer, md_lbl_publisher, md_lbl_genre, md_lbl_players, md_lbl_lastplayed, md_lbl_playcount">
+			<color>d8d8d8</color>
+			<forceUppercase>1</forceUppercase>
+			<fontPath>./art/Roboto-Light.ttf</fontPath>
+			<fontSize>0.025</fontSize>
+			<size>0.12 0.04</size>
+		</text>
+		
+		<text name="md_rating, md_developer, md_publisher, md_genre, md_players, md_playcount">
+			<color>d8d8d8</color>
+			<forceUppercase>1</forceUppercase>
+			<fontPath>./art/Roboto-Light.ttf</fontPath>
+			<fontSize>0.025</fontSize>
+			<size>0.14 0.04</size>
+		</text>
+
+		<text name="md_description">
+			<color>d8d8d8</color>
+			<forceUppercase>1</forceUppercase>
+			<fontPath>./art/Roboto-Light.ttf</fontPath>
+			<fontSize>0.025</fontSize>
+		</text>
+		
+		<datetime name="md_releasedate, md_lastplayed">
+			<color>d8d8d8</color>
+			<forceUppercase>1</forceUppercase>
+			<fontPath>./art/Roboto-Light.ttf</fontPath>
+			<fontSize>0.025</fontSize>
+			<size>0 0.04</size>
+		</datetime>
+		
+		<image name="header" extra="true">
+			<pos>0 0</pos>
+			<origin>0 0</origin>
+			<size>1 0.16</size>
+			<path>./art/darkest.png</path>
+		</image>
+
+		<image name="footer" extra="true">
+			<pos>0 1</pos>
+			<origin>0 1</origin>
+			<size>1 0.065</size>
+			<path>./art/darkest.png</path>
+		</image> 
+
+		<image name="background">
+			<pos>0 0</pos>
+			<origin>0 0</origin>
+			<size>1 1</size>
+			<path>./art/black.png</path>
+		</image> 
+
+		<textlist name="gamelist">
+			<selectorColor>151515</selectorColor>
+			<selectedColor>0098a6</selectedColor>
+			<primaryColor>ebebeb</primaryColor>
+			<secondaryColor>ebebeb</secondaryColor>
+			<fontPath>./art/Roboto-Regular.ttf</fontPath>
+			<fontSize>0.03</fontSize>
+            <scrollSound>./art/scroll.wav</scrollSound>
+			<forceUppercase>1</forceUppercase>
+		</textlist>
+		
+	</view>
+
+	<view name="basic">
+	</view>
+
+	<view name="detailed">
+	</view>
+	
+</theme>

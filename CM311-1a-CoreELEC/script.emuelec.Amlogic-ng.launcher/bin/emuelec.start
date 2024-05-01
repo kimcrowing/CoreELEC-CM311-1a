@@ -1,0 +1,171 @@
+#!/bin/sh
+
+. /storage/.kodi/addons/script.emuelec.Amlogic-ng.launcher/config/ee_env.sh
+
+RA_CONFIG_DIR="/storage/.config/retroarch/"
+RA_CONFIG_FILE="$RA_CONFIG_DIR/retroarch.cfg"
+RA_CONFIG_SUBDIRS="savestates savefiles remappings playlists system thumbnails"
+RA_EXE="$ADDON_DIR/bin/retroarch"
+ROMS_FOLDER="/storage/roms"
+DOWNLOADS="downloads"
+RA_PARAMS="--config=$RA_CONFIG_FILE --menu"
+LOGFILE="$ADDON_DIR/logs/emuelec_addon.log"
+
+rm -f /var/lock/start.retro
+
+if [[ ! -d $ADDON_DIR/logs ]]; then
+	mkdir -p $ADDON_DIR/logs
+fi 
+
+# external/usb rom mounting
+sh $ADDON_DIR/bin/emustation-config
+
+ if [ $ra_es -eq 1 ] ; then
+   RA_EXE="$ADDON_DIR/bin/emulationstation"
+   RA_PARAMS=""
+   LOGFILE="/storage/emulationstation.log"
+ fi
+
+[ ! -d "$RA_CONFIG_DIR" ] && mkdir -p "$RA_CONFIG_DIR"
+  
+ if [ ! -d "$ROMS_FOLDER" ] && [ ! -L "$ROMS_FOLDER" ]; then
+    mkdir -p "$ROMS_FOLDER"
+    
+     all_roms="downloads BGM 3do amstradcpc arcade atari2600 atari5200 atari7800 atari800 atarilynx atarilynx atarilynx atarist atomiswave coleco c64 amiga pc famicom fds capcom fbneo gb gba gbc gameandwatch intellivision mame msx msx2 neogeo ngp ngpc nes n64 openbor psx psp scummvm sega32x segacd dreamcast gamegear genesis mastersystem megadrive naomi neocd saturn sg-1000 sfc snes tg16 tg16cd sc-3000 sgfx pcengine pcenginecd pcfx vectrex videopac virtualboy wonderswan wonderswancolor x68000 zxspectrum atarijaguar odyssey zx81" 
+ 
+     for romfolder in $(echo $all_roms | tr "," " "); do
+        mkdir -p "$ROMS_FOLDER/$romfolder"
+     done
+  fi
+ [ ! -d "$ROMS_FOLDER/$DOWNLOADS" ] && mkdir -p "$ROMS_FOLDER/$DOWNLOADS"
+
+for subdir in $RA_CONFIG_SUBDIRS ; do
+	[ ! -d "$RA_CONFIG_DIR/$subdir" ] && mkdir -p "$RA_CONFIG_DIR/$subdir"
+done
+
+if [ ! -f "$RA_CONFIG_FILE" ]; then
+	if [ -f "$ADDON_DIR/config/retroarch.cfg" ]; then
+		cp "$ADDON_DIR/config/retroarch.cfg" "$RA_CONFIG_FILE"
+	fi
+fi
+
+# delete symlinks to avoid doubles
+
+if [ -d /storage/.emulationstation ]; then
+rm -rf /storage/.emulationstation
+fi 
+
+if [ -L /tmp/joypads ]; then
+rm /tmp/joypads
+fi
+
+if [ ! -L /storage/.config/amiberry ]; then
+ln -sf $ADDON_DIR/config/amiberry /storage/.config/amiberry
+rm $ADDON_DIR/config/amiberry/capsimg.so
+rm $ADDON_DIR/config/amiberry/controller
+rm $ADDON_DIR/config/amiberry/kickstarts
+ln -sf /tmp/joypads $ADDON_DIR/config/amiberry/controller
+ln -sf /storage/roms/bios/Kickstarts $ADDON_DIR/config/amiberry/kickstarts
+ln -sf $ADDON_DIR/lib/libcapsimage.so.5.1 $ADDON_DIR/config/amiberry/capsimg.so
+fi
+
+if [ ! -L /storage/.config/SDL-GameControllerDB ]; then
+ln -sf $ADDON_DIR/config/SDL-GameControllerDB /storage/.config/SDL-GameControllerDB
+fi
+
+if [ ! -L /storage/.config/ppsspp ]; then
+ln -sf $ADDON_DIR/config/ppsspp /storage/.config/ppsspp
+fi
+
+if [ ! -L $ADDON_DIR/bin/assets ]; then
+ln -sf /storage/.config/ppsspp/assets $ADDON_DIR/bin/assets
+fi
+
+if [ ! -L /storage/.config/ppsspp/assets/gamecontrollerdb.txt ]; then
+ln -sf $ADDON_DIR/config/SDL-GameControllerDB/gamecontrollerdb.txt /storage/.config/ppsspp/assets/gamecontrollerdb.txt
+fi
+
+mkdir -p /storage/.local/lib/
+
+ln -sTf $ADDON_DIR/resources/joypads/ /tmp/joypads
+ln -sTf $ADDON_DIR/lib/python3.8 /storage/.local/lib/python3.8
+
+# Check if configuration for ES is copied to storage
+if [ ! -L "/storage/.emulationstation" ]; then
+ln -sf $ADDON_DIR/config/emulationstation /storage/.emulationstation
+# mkdir /storage/.emulationstation
+# cp -rf $ADDON_DIR/config/emulationstation/* /storage/.emulationstation
+fi
+
+if [ -f "$ADDON_DIR/forceupdate" ]; then
+cp -rf "$ADDON_DIR/config/retroarch.cfg" "$RA_CONFIG_FILE"
+rm "$ADDON_DIR/forceupdate"
+fi
+
+if [ -d /storage/.config/amiberry ]; then
+	rm /storage/.config/amiberry
+fi
+
+if [ ! -L /storage/.config/amiberry ]; then
+	ln -sf /storage/.config/amiberry $ADDON_DIR/storage/.config/amiberry
+fi
+
+if [ ! -L "/storage/.config/EE_VERSION" ]; then
+ln -sf $ADDON_DIR/config/EE_VERSION /storage/.config/EE_VERSION
+fi
+
+# Make sure all scripts are executable
+chmod +x /storage/.emulationstation/scripts/*.sh
+chmod +x /storage/.emulationstation/scripts/configscripts/*.sh
+chmod +x $ADDON_DIR/bin/*
+
+[ $ra_verbose -eq 1 ] && RA_PARAMS="--verbose $RA_PARAMS"
+
+cp -rf $ADDON_DIR/config/emuelecsound.conf /storage/.config/asound.conf
+
+# Detect used device in Kodi and change asound.conf accordingly 0,0 is HDMI 0,1 is front output on the N2 (probably on others as well)
+if grep -Fxq '"audiooutput.audiodevice">ALSA:@"' /storage/.kodi/userdata/guisettings.xml; then
+sed -i "s|hw:0,0|hw:0,1|" /storage/.config/asound.conf
+fi
+
+if [ "$ra_stop_kodi" -eq 1 ] ; then
+	systemctl stop kodi
+
+/storage/.kodi/addons/script.emuelec.Amlogic-ng.launcher/bin/setres.sh
+
+# Run intro video only on the first run
+if [[ ! -f $ADDON_DIR/config/novideo ]]; then
+	SPLASH="$ADDON_DIR/config/splash/emuelec_intro_1080p.mp4"
+	$ADDON_DIR/bin/mpv $SPLASH > /dev/null 2>&1
+	touch $ADDON_DIR/config/novideo
+fi
+
+	if [ $ra_log -eq 1 ] ; then
+		$RA_EXE $RA_PARAMS >$LOGFILE 2>&1
+	else
+		$RA_EXE $RA_PARAMS
+	fi
+
+   if [ ! -f /var/lock/start.retro ]; then
+	rm /storage/.config/asound.conf
+	systemctl start kodi
+   fi
+
+else
+	pgrep kodi.bin | xargs kill -SIGSTOP
+
+	/storage/.kodi/addons/script.emuelec.Amlogic-ng.launcher/bin/setres.sh
+
+	if [ $ra_log -eq 1 ] ; then
+		$RA_EXE $RA_PARAMS >$LOGFILE 2>&1
+	else
+		$RA_EXE $RA_PARAMS
+	fi
+
+   if [ ! -f /var/lock/start.retro ]; then
+	rm /storage/.config/asound.conf
+	pgrep kodi.bin | xargs kill -SIGCONT
+   fi
+fi
+
+exit 0

@@ -1,0 +1,6 @@
+<settings>
+	<setting id="ra_stop_kodi" value="1" />
+	<setting id="ra_log" value="0" />
+	<setting id="ra_verbose" value="0" />
+	<setting id="ra_es" value="1" />
+</settings>

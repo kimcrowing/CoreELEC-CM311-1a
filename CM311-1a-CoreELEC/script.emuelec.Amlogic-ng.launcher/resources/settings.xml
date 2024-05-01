@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+	<category label="General">
+		<setting id="ra_stop_kodi" label="Stop KODI (free memory) before launching EmuELEC" type="enum" default="1" values="No|Yes" />
+		<setting id="ra_log" label="Logging of EmuELEC output" type="enum" default="0" values="No|Yes" />
+		<setting id="ra_verbose" label="Verbose logging (for debugging)" type="enum" default="0" values="No|Yes" />
+		<setting id="ra_es" label="Run Emulationstation instead of Retroarch" type="enum" default="1" values="No|Yes" />
+	</category>
+</settings>
