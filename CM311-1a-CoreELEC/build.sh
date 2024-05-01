@@ -34,7 +34,7 @@ sudo mount -o loop,offset=${offset} ${source_img_name}.img ${mount_point}
 mkdir -p ${kodi_addon}/script.emuelec.Amlogic-ng.launcher
 echo "Downloading Emuelec-addon"
 echo "copy emuELEC addon"
-sudo cp ${addon_file} ${kodi_addon}/script.emuelec.Amlogic-ng.launcher
+sudo cp -r ${addon_file} ${kodi_addon}/script.emuelec.Amlogic-ng.launcher
 
 echo "Copying CM311-1a DTB file"
 sudo cp ${common_files}/cm311-1a.dtb ${mount_point}/dtb.img
