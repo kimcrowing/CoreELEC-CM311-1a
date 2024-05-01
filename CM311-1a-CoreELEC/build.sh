@@ -35,7 +35,7 @@ mkdir -p ${kodi_addon}
 echo "Downloading Emuelec-addon"
 wget ${emuelec_url} -O ${addon_file} | exit 1
 echo "copy emuELEC addon"
-unzip ${addon_file} -d ${kodi_addon} | exit 1
+sudo unzip ${addon_file} -d ${kodi_addon} | exit 1
 
 echo "Copying CM311-1a DTB file"
 sudo cp ${common_files}/cm311-1a.dtb ${mount_point}/dtb.img
