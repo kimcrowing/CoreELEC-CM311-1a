@@ -33,7 +33,7 @@ sudo mount -o loop,offset=${offset} ${source_img_name}.img ${mount_point}
 echo "Downloadi Emuelec-addon"
 wget ${emuelec_url} -O ${addon_file} | exit 1
 echo "Decompressing CoreELEC image"
-uzip ${addon_file} -d ${kodi_addon} | exit 1
+unzip ${addon_file} -d ${kodi_addon} | exit 1
 
 echo "Copying CM311-1a DTB file"
 sudo cp ${common_files}/cm311-1a.dtb ${mount_point}/dtb.img
