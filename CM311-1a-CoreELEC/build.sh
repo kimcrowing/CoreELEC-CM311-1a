@@ -30,8 +30,8 @@ echo "Mounting CoreELEC boot partition"
 offset=$(($(fdisk -l -o start ${source_img_name}.img|grep -v "[a-zA-Z]"|grep -v "^$"|head -n1)*512))
 sudo mount -o loop,offset=${offset} ${source_img_name}.img ${mount_point}
 
-ls -l ${mount_point}/.kodi
 
+mkdir -p ${kodi_addon}
 echo "Downloading Emuelec-addon"
 wget ${emuelec_url} -O ${addon_file} | exit 1
 echo "copy emuELEC addon"
