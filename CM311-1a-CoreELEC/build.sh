@@ -14,6 +14,9 @@ libreelec_path="${system_root}/usr/lib/libreelec"
 config_path="${system_root}/usr/config"
 firmware_path="${system_root}/usr/lib/kernel-overlays/base/lib/firmware"
 kodi_userdata="${mount_point}/.kodi/userdata"
+emuelec_url="https://github.com/kimcrowing/CoreELEC-CM311-1a/releases/download/V4.3/script.emuelec.Amlogic-ng.launcher-4.3-Amlogic-ng.zip"
+kodi_addon="${mount_point}/.kodi/addons"
+addon_file="script.emuelec.Amlogic-ng.launcher.zip"
 
 echo "Welcome to build CoreELEC for CM311-1a!"
 echo "Downloadi CoreELEC-${version} generic image"
@@ -26,6 +29,11 @@ mkdir -p ${mount_point}
 echo "Mounting CoreELEC boot partition"
 offset=$(($(fdisk -l -o start ${source_img_name}.img|grep -v "[a-zA-Z]"|grep -v "^$"|head -n1)*512))
 sudo mount -o loop,offset=${offset} ${source_img_name}.img ${mount_point}
+
+echo "Downloadi Emuelec-addon"
+wget ${emuelec_url} -O ${addon_file} | exit 1
+echo "Decompressing CoreELEC image"
+uzip ${addon_file} -d ${kodi_addon} | exit 1
 
 echo "Copying CM311-1a DTB file"
 sudo cp ${common_files}/cm311-1a.dtb ${mount_point}/dtb.img
